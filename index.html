@@ -84,7 +84,7 @@
         /* Solo estilos críticos para renderizado inicial */
         body {
             padding-top: 76px;
-            background-color: #f8f9fa;
+            background-color: #eef1f6;
         }
         
         .navbar {
@@ -341,21 +341,13 @@
             color: inherit !important;
         }
         
-        /* Mejoras de contraste */
-        .bg-light {
-            background-color: #f8fbfd !important;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, #f8fbfd 0%, #e9f2f9 100%);
-        }
+        /* Eliminados: ahora se gestionan en css/styles.css con variables */
 
         /* NUEVO: Estilos para el formulario de suscripción */
         .newsletter-form {
-            background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
-            border: 2px dashed #333;
+            border: 2px dashed var(--border-color, #333);
             margin-top: 15px;
         }
 
@@ -385,11 +377,10 @@
         
         /* NUEVO: Estilos para la sección de palabras clave */
         .keywords-section {
-            background-color: #fff;
             border-radius: 15px;
             padding: 30px;
             margin: 40px 0;
-            border: 3px dashed #333;
+            border: 3px dashed var(--border-color, #333);
         }
         
         .keyword-category {

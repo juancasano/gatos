@@ -7,17 +7,18 @@
    - Skip links accesibles
    ============================================================ */
 
-/* ----------- Variables del tema (claro por defecto) ----------- */
+/* ----------- Variables del tema (claro por defecto, NUNCA blanco puro) ----------- */
 :root {
-  --bg-color: #f8f9fa;
-  --bg-elevated: #ffffff;
-  --text-color: #212529;
-  --text-muted: #6c757d;
-  --border-color: #333;
+  --bg-color: #eef1f6;          /* azul-gris suave, no blanco */
+  --bg-elevated: #f6f8fb;       /* card/modal, blanco-roto con tinte azul */
+  --bg-section: #e7ebf2;        /* secciones alternas mas oscuro que body */
+  --text-color: #1f2937;
+  --text-muted: #5b6473;
+  --border-color: #2d3748;
   --accent: #6366f1;
   --accent-hover: #4f46e5;
   --highlight-bg: #fff3cd;
-  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 4px 12px rgba(31, 41, 55, 0.08);
   --transition: 0.3s ease;
 }
 
@@ -25,6 +26,7 @@
 [data-theme="dark"] {
   --bg-color: #0f172a;
   --bg-elevated: #1e293b;
+  --bg-section: #172033;
   --text-color: #e2e8f0;
   --text-muted: #94a3b8;
   --border-color: #475569;
@@ -34,11 +36,48 @@
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* ----------- Aplicacion del tema ----------- */
+/* ----------- Aplicacion del tema (afecta a TODOS los fondos) ----------- */
 body {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color) !important;
   color: var(--text-color);
   transition: background-color var(--transition), color var(--transition);
+}
+
+/* Fondos blancos de Bootstrap forzados a la paleta */
+.bg-white,
+.bg-body {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-color);
+}
+
+/* Secciones con .bg-light (Bootstrap) usan el tono "section" */
+.bg-light,
+.hero-section,
+.keywords-section,
+.tutorial-section,
+.donation-box,
+.fact-card,
+.newsletter-form,
+.footer-section {
+  background-color: var(--bg-section) !important;
+  color: var(--text-color);
+}
+
+/* Cards, modales y acordeones usan el "elevated" suave */
+.card,
+.accordion-item,
+.modal-content,
+.contact-form-container {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+/* Bordes de Bootstrap adaptados */
+.border-top,
+.border-bottom,
+.border {
+  border-color: var(--border-color) !important;
 }
 
 [data-theme="dark"] .bg-light,
@@ -47,15 +86,16 @@ body {
 [data-theme="dark"] .tutorial-section,
 [data-theme="dark"] .donation-box,
 [data-theme="dark"] .fact-card,
-[data-theme="dark"] .newsletter-form {
-  background-color: var(--bg-elevated) !important;
-  color: var(--text-color);
+[data-theme="dark"] .newsletter-form,
+[data-theme="dark"] .footer-section {
+  background-color: var(--bg-section) !important;
 }
 
 [data-theme="dark"] .card,
 [data-theme="dark"] .accordion-item,
-[data-theme="dark"] .modal-content {
-  background-color: var(--bg-elevated);
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .contact-form-container {
+  background-color: var(--bg-elevated) !important;
   color: var(--text-color);
   border-color: var(--border-color);
 }
