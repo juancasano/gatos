@@ -93,13 +93,17 @@
             left: 0;
             width: 100%;
             z-index: 1030;
-            transition: box-shadow 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+            transition: transform 0.35s ease, box-shadow 0.3s ease, padding 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(0);
         }
         .navbar.scrolled {
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
             padding-top: 4px;
             padding-bottom: 4px;
+        }
+        .navbar.is-hidden {
+            transform: translateY(-100%);
         }
         
         .hero-section {

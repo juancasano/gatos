@@ -159,14 +159,37 @@
     document.querySelectorAll('.fade-in-on-scroll').forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ============ BOTON "IR ARRIBA" + NAVBAR SCROLLED ============ */
+  /* ============ BOTON "IR ARRIBA" + NAVBAR AUTO-HIDE/SHOW ============ */
   const backToTop = document.querySelector('.back-to-top');
   const navbar = document.querySelector('.navbar');
+  let lastScrollY = window.scrollY;
+  const SCROLL_DELTA = 8; // umbral minimo para registrar cambio de direccion
 
   function handleScroll() {
-    const scrolled = window.scrollY > 50;
-    backToTop?.classList.toggle('is-visible', window.scrollY > 400);
+    const currentY = window.scrollY;
+    const scrolled = currentY > 50;
+
+    backToTop?.classList.toggle('is-visible', currentY > 400);
     navbar?.classList.toggle('scrolled', scrolled);
+
+    if (navbar) {
+      const diff = currentY - lastScrollY;
+
+      // Cerca del top: siempre visible
+      if (currentY < 80) {
+        navbar.classList.remove('is-hidden');
+      }
+      // Scroll hacia abajo y ya pasaste el hero -> ocultar
+      else if (diff > SCROLL_DELTA && currentY > 200) {
+        navbar.classList.add('is-hidden');
+      }
+      // Scroll hacia arriba -> mostrar
+      else if (diff < -SCROLL_DELTA) {
+        navbar.classList.remove('is-hidden');
+      }
+
+      lastScrollY = currentY;
+    }
   }
 
   // Throttle con requestAnimationFrame

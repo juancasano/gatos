@@ -9,16 +9,16 @@
 
 /* ----------- Variables del tema (claro por defecto, NUNCA blanco puro) ----------- */
 :root {
-  --bg-color: #eef1f6;          /* azul-gris suave, no blanco */
-  --bg-elevated: #f6f8fb;       /* card/modal, blanco-roto con tinte azul */
-  --bg-section: #e7ebf2;        /* secciones alternas mas oscuro que body */
+  --bg-color: #d8dee9;          /* body: gris-azul medio, mas oscuro para que cards destaquen */
+  --bg-elevated: #fafbfd;       /* card/modal: blanco-roto muy suave (NO blanco puro) */
+  --bg-section: #c8d1de;        /* secciones alternas: aun mas oscuro que body */
   --text-color: #1f2937;
   --text-muted: #5b6473;
-  --border-color: #2d3748;
+  --border-color: #4a5568;
   --accent: #6366f1;
   --accent-hover: #4f46e5;
   --highlight-bg: #fff3cd;
-  --card-shadow: 0 4px 12px rgba(31, 41, 55, 0.08);
+  --card-shadow: 0 4px 14px rgba(31, 41, 55, 0.12), 0 1px 3px rgba(31, 41, 55, 0.06);
   --transition: 0.3s ease;
 }
 
@@ -63,14 +63,39 @@ body {
   color: var(--text-color);
 }
 
-/* Cards, modales y acordeones usan el "elevated" suave */
+/* Cards, modales y acordeones usan el "elevated" suave + sombra para destacar */
 .card,
 .accordion-item,
 .modal-content,
-.contact-form-container {
+.contact-form-container,
+.fact-card,
+.donation-box,
+.tutorial-section,
+.keywords-section,
+.newsletter-form {
   background-color: var(--bg-elevated) !important;
   color: var(--text-color);
   border-color: var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+/* Hover sutil en cards para sensacion de profundidad */
+.card:hover,
+.fact-card:hover {
+  box-shadow: 0 8px 22px rgba(31, 41, 55, 0.15), 0 2px 6px rgba(31, 41, 55, 0.08);
+}
+
+/* Modo oscuro: sombras mas sutiles (no se notan tanto sobre fondo oscuro) */
+[data-theme="dark"] .card,
+[data-theme="dark"] .accordion-item,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .contact-form-container,
+[data-theme="dark"] .fact-card,
+[data-theme="dark"] .donation-box,
+[data-theme="dark"] .tutorial-section,
+[data-theme="dark"] .keywords-section,
+[data-theme="dark"] .newsletter-form {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Bordes de Bootstrap adaptados */
