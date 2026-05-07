@@ -7,7 +7,27 @@
     <!-- Meta descripción optimizada para SEO -->
     <meta name="description" content="Descubre todo sobre los gatos: características, cuidados, comportamiento, alimentación y curiosidades. Aprende a dibujar un gato, conoce cuánto viven y sus sentidos especiales. Información completa sobre el mundo felino.">
     <meta name="keywords" content="gato, gatos, cuidados gatos, comportamiento gatos, dibujar gato, cuanto viven los gatos, alimentación gatos, curiosidades gatos, mundo felino">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="canonical" href="https://gatosisidoros.netlify.app/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236366F1'/><path d='M35 35 L65 35 L65 65 L35 65 Z' fill='%23fff' transform='rotate(45 50 50)'/></svg>">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/gato1.avif">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gatosisidoros.netlify.app/">
+    <meta property="og:title" content="Mundo Felino — Todo sobre Gatos">
+    <meta property="og:description" content="Descubre características, cuidados, comportamiento, alimentación y curiosidades del mundo felino.">
+    <meta property="og:image" content="https://gatosisidoros.netlify.app/images/gato1.avif">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mundo Felino — Todo sobre Gatos">
+    <meta name="twitter:description" content="Descubre características, cuidados, comportamiento, alimentación y curiosidades del mundo felino.">
+    <meta name="twitter:image" content="https://gatosisidoros.netlify.app/images/gato1.avif">
     <!-- Google Analytics CORREGIDO -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVMPHDDBNT"></script>
@@ -55,6 +75,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/sketchy/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+
+    <!-- Estilos personalizados (dark mode, lightbox, animaciones) -->
+    <link rel="stylesheet" href="css/styles.css">
     
     <!-- Estilos críticos inline para mejorar FCP -->
     <style>
@@ -422,8 +445,11 @@
     </style>
 </head>
 <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#inicio" class="skip-link">Saltar al contenido principal</a>
+
     <!-- Navbar fija -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Navegación principal">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="images/gato1.avif" class="rounded-circle me-2" alt="Logo Mundo Felino - Gato naranja" width="40" height="40" loading="eager" fetchpriority="high">
@@ -456,12 +482,40 @@
                         <a class="nav-link" href="#donaciones">Donaciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
                         <button class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#donationModal">Donar</button>
+                    </li>
+                    <li class="nav-item d-flex align-items-center ms-2">
+                        <button class="theme-toggle" type="button" aria-label="Cambiar tema oscuro">
+                            <i class="bi bi-moon-fill" aria-hidden="true"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Boton "ir arriba" -->
+    <button class="back-to-top" type="button" aria-label="Volver arriba">
+        <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Lightbox de galeria -->
+    <div class="lightbox" role="dialog" aria-label="Visor de imagenes" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Cerrar visor">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+        <button class="lightbox-prev" type="button" aria-label="Imagen anterior">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        </button>
+        <img src="" alt="">
+        <button class="lightbox-next" type="button" aria-label="Imagen siguiente">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </button>
+        <div class="lightbox-counter" aria-live="polite"></div>
+    </div>
 
     <!-- Hero Section optimizada -->
     <section id="inicio" class="hero-section text-center bg-light">
@@ -483,7 +537,7 @@
     <div class="divider"></div>
 
     <!-- Características Section -->
-    <section id="caracteristicas" class="py-5">
+    <section id="caracteristicas" class="py-5 fade-in-on-scroll">
         <div class="container">
             <h2 class="text-center mb-5">Características de los <span class="keyword-highlight">Gatos</span></h2>
             <div class="row g-4">
@@ -543,7 +597,7 @@
     <div class="divider"></div>
 
     <!-- Nueva sección: Cómo dibujar un gato -->
-    <section id="dibujar" class="py-5 bg-light">
+    <section id="dibujar" class="py-5 bg-light fade-in-on-scroll">
         <div class="container">
             <h2 class="text-center mb-5">Cómo <span class="keyword-highlight">Dibujar un Gato</span> - Tutorial Paso a Paso</h2>
             <div class="tutorial-section">
@@ -585,7 +639,7 @@
     <div class="divider"></div>
 
     <!-- NUEVA SECCIÓN: Palabras clave relacionadas con gatos -->
-    <section id="palabras-clave" class="py-5">
+    <section id="palabras-clave" class="py-5 fade-in-on-scroll">
         <div class="container">
             <h2 class="text-center mb-5">Palabras clave relacionadas con <span class="keyword-highlight">Gatos</span></h2>
             <div class="keywords-section">
@@ -733,44 +787,55 @@
     <!-- Línea divisoria -->
     <div class="divider"></div>
 
-    <!-- Galería Section CORREGIDA -->
-    <section id="galeria" class="py-5 bg-light">
+    <!-- Galería Section: grid responsive + buscador + lightbox -->
+    <section id="galeria" class="py-5 bg-light fade-in-on-scroll">
         <div class="container">
-            <h2 class="text-center mb-5">Galería de <span class="keyword-highlight">Gatos</span></h2>
-            <div class="gallery-container">
-                <!-- Primera imagen de la galería - CORREGIDO -->
-                <div class="gallery-slide active">
-                    <img src="images/gato2.avif" class="gallery-img" alt="Gato 1 - Gato gris estirándose mostrando su flexibilidad" loading="lazy">
-                    <!-- Botón de donación -->
-                    <button class="btn btn-primary gallery-donation-btn" data-bs-toggle="modal" data-bs-target="#donationModal">
-                        Donar por este gato
-                    </button>
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/gato3.avif" class="gallery-img" alt="Gato 2 - Primer plano de un gato con ojos muy abiertos" loading="lazy">
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/gato4.avif" class="gallery-img" alt="Gato 3 - Gato blanco y negro en posición de caza" loading="lazy">
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/gato6.avif" class="gallery-img" alt="Gato 4 - Gato naranja con expresión curiosa" loading="lazy">
-                </div>
-                <div class="gallery-slide">
-                    <img src="images/gato5.avif" class="gallery-img" alt="Gato 5 - Gato comiendo de un plato" loading="lazy">
-                </div>
-                
-                <button class="gallery-nav prev">‹</button>
-                <button class="gallery-nav next">›</button>
+            <h2 class="text-center mb-3">Galería de <span class="keyword-highlight">Gatos</span></h2>
+            <p class="text-center mb-4 text-muted">Haz click en cualquier imagen para ampliarla. Usa las flechas o desliza para navegar.</p>
+
+            <!-- Buscador en tiempo real -->
+            <div class="gallery-search">
+                <label for="gallery-search-input" class="visually-hidden">Buscar gatos por descripción</label>
+                <input
+                    type="search"
+                    id="gallery-search-input"
+                    class="form-control"
+                    placeholder="Buscar... (gris, naranja, comiendo, ojos...)"
+                    aria-label="Buscar imágenes de gatos">
             </div>
-            
-            <!-- Indicadores de la galería -->
-            <div class="gallery-indicators">
-                <div class="gallery-indicator active" data-slide="0"></div>
-                <div class="gallery-indicator" data-slide="1"></div>
-                <div class="gallery-indicator" data-slide="2"></div>
-                <div class="gallery-indicator" data-slide="3"></div>
-                <div class="gallery-indicator" data-slide="4"></div>
+
+            <!-- Grid responsive -->
+            <div class="gallery-grid">
+                <button type="button" class="gallery-item" data-tags="gris flexible estirando">
+                    <img src="images/gato2.avif" alt="Gato gris estirándose mostrando su flexibilidad" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="ojos primer plano mirada">
+                    <img src="images/gato3.avif" alt="Primer plano de un gato con ojos muy abiertos" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="blanco negro caza">
+                    <img src="images/gato4.avif" alt="Gato blanco y negro en posición de caza" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="naranja curioso">
+                    <img src="images/gato6.avif" alt="Gato naranja con expresión curiosa" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="comiendo alimentacion plato">
+                    <img src="images/gato5.avif" alt="Gato comiendo de un plato" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="durmiendo descansando">
+                    <img src="images/gato7.avif" alt="Gato durmiendo plácidamente" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="jugando juguete">
+                    <img src="images/gato8.avif" alt="Gato jugando con un juguete" loading="lazy">
+                </button>
+                <button type="button" class="gallery-item" data-tags="naranja logo principal">
+                    <img src="images/gato1.avif" alt="Gato naranja, logo principal" loading="lazy">
+                </button>
             </div>
+
+            <!-- Mensaje cuando no hay resultados -->
+            <p class="gallery-empty mt-4">
+                <i class="bi bi-emoji-frown me-2"></i>No se encontraron imágenes con ese término. Prueba con otra palabra.
+            </p>
         </div>
     </section>
 
@@ -778,7 +843,7 @@
     <div class="divider"></div>
 
     <!-- Acordeón ampliado -->
-    <section id="faq" class="py-5">
+    <section id="faq" class="py-5 fade-in-on-scroll">
         <div class="container">
             <h2 class="text-center mb-5">Preguntas Frecuentes sobre <span class="keyword-highlight">Gatos</span></h2>
             <div class="accordion" id="faqAccordion">
@@ -1062,6 +1127,50 @@
                         <p>Hemos recibido tu información correctamente y nos pondremos en contacto contigo pronto.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea divisoria -->
+    <div class="divider"></div>
+
+    <!-- Sección de contacto con formulario validado -->
+    <section id="contacto" class="py-5 fade-in-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-3">Contacto</h2>
+            <p class="text-center mb-4 text-muted">¿Quieres compartir tu historia con un gato? Escríbenos.</p>
+
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form" novalidate aria-label="Formulario de contacto">
+                    <div>
+                        <label for="contact-name" class="form-label">Nombre</label>
+                        <input type="text" id="contact-name" name="name" class="form-control" required minlength="2" autocomplete="name">
+                        <div class="invalid-feedback" aria-live="polite"></div>
+                    </div>
+
+                    <div>
+                        <label for="contact-email" class="form-label">Email</label>
+                        <input type="email" id="contact-email" name="email" class="form-control" required autocomplete="email">
+                        <div class="invalid-feedback" aria-live="polite"></div>
+                    </div>
+
+                    <div>
+                        <label for="contact-message" class="form-label">Mensaje</label>
+                        <textarea id="contact-message" name="message" class="form-control" rows="5" required minlength="10"></textarea>
+                        <div class="invalid-feedback" aria-live="polite"></div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-send me-2"></i>Enviar mensaje
+                        </button>
+                    </div>
+
+                    <div class="form-success" role="status">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        <strong>¡Gracias!</strong> Tu mensaje se ha enviado correctamente. Te responderemos pronto.
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -1389,6 +1498,9 @@
             initializeScroll();
         });
     </script>
+
+    <!-- App principal: dark mode, lightbox, búsqueda, formulario, animaciones, PWA -->
+    <script src="js/app.js" defer></script>
 </body>
 </html>
 

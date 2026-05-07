@@ -1,0 +1,27 @@
+{
+  "name": "Mundo Felino - Todo sobre Gatos",
+  "short_name": "Mundo Felino",
+  "description": "Información completa sobre gatos: características, cuidados, comportamiento y curiosidades.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f9fa",
+  "theme_color": "#6366f1",
+  "lang": "es",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "images/gato1.avif",
+      "sizes": "192x192",
+      "type": "image/avif",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/gato1.avif",
+      "sizes": "512x512",
+      "type": "image/avif",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle"]
+}
