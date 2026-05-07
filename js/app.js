@@ -159,11 +159,14 @@
     document.querySelectorAll('.fade-in-on-scroll').forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ============ BOTON "IR ARRIBA" ============ */
+  /* ============ BOTON "IR ARRIBA" + NAVBAR SCROLLED ============ */
   const backToTop = document.querySelector('.back-to-top');
+  const navbar = document.querySelector('.navbar');
 
-  function toggleBackToTop() {
+  function handleScroll() {
+    const scrolled = window.scrollY > 50;
     backToTop?.classList.toggle('is-visible', window.scrollY > 400);
+    navbar?.classList.toggle('scrolled', scrolled);
   }
 
   // Throttle con requestAnimationFrame
@@ -171,12 +174,15 @@
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        toggleBackToTop();
+        handleScroll();
         ticking = false;
       });
       ticking = true;
     }
   }, { passive: true });
+
+  // Estado inicial
+  handleScroll();
 
   backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

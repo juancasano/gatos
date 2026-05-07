@@ -90,8 +90,16 @@
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             z-index: 1030;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .navbar.scrolled {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            padding-top: 4px;
+            padding-bottom: 4px;
         }
         
         .hero-section {
@@ -141,10 +149,15 @@
         }
         
         .feature-card-img {
-            height: 180px;
+            height: 220px;
             width: 100%;
             object-fit: cover;
+            object-position: center top;
         }
+        /* Posiciones especificas para que la cara/cuerpo del gato no se corte */
+        .feature-card-img.pos-center { object-position: center; }
+        .feature-card-img.pos-eyes { object-position: center 30%; }
+        .feature-card-img.pos-face { object-position: center 25%; }
 
         /* CORRECCIÓN: Mejor espaciado para la imagen principal */
         .hero-image-container {
@@ -545,7 +558,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 text-center feature-card">
                         <div class="img-placeholder" style="height: 180px;">
-                            <img src="images/gato2.avif" class="card-img-top feature-card-img" alt="Anatomía del gato - Gato gris estirándose mostrando su flexibilidad" width="300" height="200" loading="lazy">
+                            <img src="images/gato2.avif" class="card-img-top feature-card-img pos-center" alt="Anatomía del gato - Gato gris estirándose mostrando su flexibilidad" width="300" height="200" loading="lazy">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Anatomía del <span class="keyword-highlight">Gato</span></h5>
@@ -557,7 +570,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 text-center feature-card">
                         <div class="img-placeholder" style="height: 180px;">
-                            <img src="images/gato3.avif" class="card-img-top feature-card-img" alt="Sentidos del gato - Primer plano de un gato con ojos muy abiertos" width="300" height="200" loading="lazy">
+                            <img src="images/gato3.avif" class="card-img-top feature-card-img pos-eyes" alt="Sentidos del gato - Primer plano de un gato con ojos muy abiertos" width="300" height="200" loading="lazy">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Sentidos del <span class="keyword-highlight">Gato</span></h5>
@@ -569,7 +582,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 text-center feature-card">
                         <div class="img-placeholder" style="height: 180px;">
-                            <img src="images/gato4.avif" class="card-img-top feature-card-img" alt="Comportamiento del gato - Gato blanco y negro en posición de caza" width="300" height="200" loading="lazy">
+                            <img src="images/gato4.avif" class="card-img-top feature-card-img pos-center" alt="Comportamiento del gato - Gato blanco y negro en posición de caza" width="300" height="200" loading="lazy">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Comportamiento del <span class="keyword-highlight">Gato</span></h5>
@@ -581,7 +594,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 text-center feature-card">
                         <div class="img-placeholder" style="height: 180px;">
-                            <img src="images/gato5.avif" class="card-img-top feature-card-img" alt="Alimentación del gato - Gato comiendo de un plato" width="300" height="200" loading="lazy">
+                            <img src="images/gato5.avif" class="card-img-top feature-card-img pos-face" alt="Alimentación del gato - Gato comiendo de un plato" width="300" height="200" loading="lazy">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Alimentación del <span class="keyword-highlight">Gato</span></h5>
@@ -1293,47 +1306,8 @@
         // Cargar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Galería interactiva CORREGIDA
-            function initializeGallery() {
-                const slides = document.querySelectorAll('.gallery-slide');
-                const indicators = document.querySelectorAll('.gallery-indicator');
-                const prevBtn = document.querySelector('.gallery-nav.prev');
-                const nextBtn = document.querySelector('.gallery-nav.next');
-                let currentSlide = 0;
-                
-                function showSlide(index) {
-                    slides.forEach(slide => slide.classList.remove('active'));
-                    indicators.forEach(indicator => indicator.classList.remove('active'));
-                    
-                    slides[index].classList.add('active');
-                    indicators[index].classList.add('active');
-                    currentSlide = index;
-                }
-                
-                prevBtn.addEventListener('click', function() {
-                    let newIndex = currentSlide - 1;
-                    if (newIndex < 0) newIndex = slides.length - 1;
-                    showSlide(newIndex);
-                });
-                
-                nextBtn.addEventListener('click', function() {
-                    let newIndex = currentSlide + 1;
-                    if (newIndex >= slides.length) newIndex = 0;
-                    showSlide(newIndex);
-                });
-                
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', function() {
-                        showSlide(index);
-                    });
-                });
-                
-                setInterval(function() {
-                    let newIndex = currentSlide + 1;
-                    if (newIndex >= slides.length) newIndex = 0;
-                    showSlide(newIndex);
-                }, 5000);
-            }
+            // Galeria antigua reemplazada por la nueva en js/app.js (lightbox + buscador)
+            function initializeGallery() { /* deprecated, ahora en js/app.js */ }
             
             // Validación del formulario
             function initializeForm() {
@@ -1427,49 +1401,54 @@
                 }
             }
             
-            // Botón Donar en el modal
+            // Boton Donar en el modal: cierra modal y hace scroll a seccion donaciones
             function initializeModal() {
                 const modalDonateButton = document.getElementById('modalDonateButton');
+                if (!modalDonateButton) return;
+
                 modalDonateButton.addEventListener('click', function() {
                     const modalElement = document.getElementById('donationModal');
-                    const modal = bootstrap.Modal.getInstance(modalElement);
-                    modal.hide();
-                    
+                    if (modalElement) {
+                        // getOrCreateInstance es seguro: crea la instancia si no existe
+                        const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+                        modal.hide();
+                    }
+
+                    // Esperar a que termine la animacion de cierre del modal
                     setTimeout(function() {
                         const targetElement = document.getElementById('donaciones');
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const targetPosition = targetElement.offsetTop - navbarHeight - 50;
-                        
+                        if (!targetElement) return;
+                        const navbar = document.querySelector('.navbar');
+                        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 30;
+
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
                         });
-                    }, 300);
+                    }, 350);
                 });
             }
             
             // Scroll optimizado
             function initializeScroll() {
                 const scrollToSection = document.getElementById('scrollToSection');
-                
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 500) {
-                        scrollToSection.style.display = 'block';
-                    } else {
-                        scrollToSection.style.display = 'none';
-                    }
-                });
-                
-                scrollToSection.addEventListener('click', function() {
-                    const targetElement = document.getElementById('faq');
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 80;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
+                if (scrollToSection) {
+                    window.addEventListener('scroll', function() {
+                        scrollToSection.style.display = window.scrollY > 500 ? 'block' : 'none';
                     });
-                });
+
+                    scrollToSection.addEventListener('click', function() {
+                        const targetElement = document.getElementById('faq');
+                        if (!targetElement) return;
+                        const navbar = document.querySelector('.navbar');
+                        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - navbarHeight - 80,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
                 
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {

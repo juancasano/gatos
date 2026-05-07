@@ -146,11 +146,29 @@ python -m http.server 8000
 
 ---
 
+## Responsive design
+
+Probado y optimizado para 3 breakpoints principales:
+
+| Dispositivo | Ancho | Adaptaciones |
+|---|---|---|
+| **Móvil** | <576px | Navbar colapsada, galería en 2 columnas, tipografía reducida, botones flotantes más pequeños |
+| **Tablet** | 576-991px | Galería en 3-4 columnas, formulario más compacto, lightbox optimizado |
+| **Escritorio** | ≥992px | Navbar completa, galería en 4-5 columnas, todas las features al máximo |
+
+Decisiones técnicas:
+- **Mobile-first**: estilos base pensados para móvil, media queries añaden complejidad para pantallas grandes.
+- **Sin frameworks de grid propios**: Bootstrap 5 ya gestiona el grid; las customizaciones son específicas (galería con `grid-template-columns`).
+- **Touch-friendly**: lightbox con swipe horizontal, botones con área mínima de 44x44px (recomendación WCAG).
+
+---
+
 ## Notas técnicas honestas
 
 - **Sin build step**: todo es vanilla JS / CSS, sin Webpack, Vite ni transpilación. Decisión consciente para mantener el proyecto simple y fácil de servir directamente desde Netlify.
 - **Sin tests**: es un ejercicio estático con poco lógica de negocio crítica. En proyectos reales, sí escribiría tests (en mi siguiente proyecto Vue.js los incluyo desde el día 1).
 - **Single-page**: todo el contenido en una sola URL para facilitar el SEO inicial. Para sitios más grandes habría usado un sistema multi-página o un static site generator.
+- **Bootstrap + custom CSS**: combiné Bootstrap 5 (grid, modal, accordion, formularios) con CSS propio (dark mode, lightbox, animaciones) en `css/styles.css`. Mantengo Bootstrap por sus componentes y accesibilidad ya probada.
 
 Para proyectos full stack con base de datos, usuarios y panel de administración, consulta **[Camiglobo Barcelona](https://github.com/juancasano/proyecto)** ([camiglobo.com](https://camiglobo.com)).
 
